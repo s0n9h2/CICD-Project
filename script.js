@@ -12,15 +12,8 @@ function appendToHistory(text) {
   document.getElementById('historyList').appendChild(li);
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
-/* 추가 */
-function resetHistory() {
-  const list = document.getElementById('historyList');
-  list.innerHTML = '';
-}
-
 if (typeof module !== 'undefined') {
   module.exports = {
     appendToHistory,
-    resetHistory // 추가
    };
 }
