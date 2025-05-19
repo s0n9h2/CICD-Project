@@ -1,0 +1,29 @@
+name: CI  # 이 워크플로우 이름(Actions 탭에 보이게 될 이름)
+
+on:  # 언제 이 워크플로우를 실행할지 정하는 부분
+  push:  # git push가 일어났을 때
+    branches:
+      - main  # main 브랜치에 push가 일어날 때만 작동!
+
+  pull_request:  # PR(Pull Request)이 열리거나 머지될 때
+    branches:
+      - main  # main 브랜치에 PR 머지 시에도 작동!
+
+jobs:  # 할 일 목록 (여러 개 가능, 지금은 1개만 있음)
+  test:  # job 이름
+    runs-on: ubuntu-latest  # 이 job을 실행할 환경(GitHub 서버에 있는 최신 우분투 환경에서 실행됨)
+
+    steps:  # 실제로 실행될 명령어들 (순서대로 실행)
+      - name: Checkout repository  # 레포 코드 체크아웃 받기 (즉, 깃헙 코드 내려받기)
+        uses: actions/checkout@v3  # GitHub 공식 액션 사용
+
+      - name: Set up Node  # Node.js 개발 환경 세팅
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Node.js 18 버전 사용
+
+      - name: Install dependencies  # npm install 실행 (의존성 설치)
+        run: npm install
+
+      - name: Run tests  # npm test 실행 (테스트 코드 돌리기)
+        run: npm test
