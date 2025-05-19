@@ -1,1 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>입력 히스토리</title>
+  <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+  <div style="margin:20px;">
+    <input id="inputBox" class="easyui-textbox" prompt="내용 입력" style="width:300px">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="handleSubmit()">제출</a>
 
+    <ul id="historyList" style="margin-top:20px;"></ul>
+  </div>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
