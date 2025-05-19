@@ -2,7 +2,9 @@
  * @jest-environment jsdom
  */
 
-const { appendToHistory } = require('./script');
+const { appendToHistory,
+        resetHistory // 추가
+      } = require('./script');
 
 describe('appendToHistory', () => {
   beforeEach(() => {
@@ -22,5 +24,14 @@ describe('appendToHistory', () => {
     const listItems = document.querySelectorAll('#historyList li');
     expect(listItems.length).toBe(2);
     expect(listItems[1].textContent).toBe('두번째');
+  });
+});
+
+describe('resetHistory', () => {
+  // 추가
+  test('resetHistory 호출 시 모든 항목이 제거된다', () => {
+    resetHistory();
+    const listItems = document.querySelectorAll('#historyList li');
+    expect(listItems.length).toBe(0);
   });
 });
