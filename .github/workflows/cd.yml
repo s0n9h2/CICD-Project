@@ -1,0 +1,20 @@
+name: CD  # Continuous Deployment (지속적 배포)
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push 될 때마다 배포 실행됨!
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 우분투 최신 환경에서 실행
+
+    steps:
+      - name: Checkout Repository  # 코드 받아오기
+        uses: actions/checkout@v3
+
+      - name: Deploy static site to GitHub Pages  # 정적 사이트 GitHub Pages에 배포
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 인증 토큰 (GitHub이 자동으로 제공해줌)
+          publish_dir: ./  # index.html이 위치한 루트 디렉토리를 그대로 배포!
