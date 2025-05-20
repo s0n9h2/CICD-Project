@@ -26,3 +26,11 @@ describe('appendToHistory', () => {
     expect(listItems[1].textContent).toBe('두번째');
   });
 });
+
+describe('resetHistory', () => {
+  test('resetHistory 호출 시 모든 항목이 제거된다', () => {
+    resetHistory();
+    const listItems = document.querySelectorAll('#historyList li');
+    expect(listItems.length).toBe(0);
+  });
+});
